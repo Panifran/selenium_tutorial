@@ -90,11 +90,11 @@ browser = webdriver.Chrome(service=webdriver_service, options=chrome_options)
 url = 'https://www.oddsportal.com/'
 browser.get(url)
 
-WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH, ".//div[contains(@class, 'loginModalBtn')]")))
+WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, ".//div[contains(@class, 'loginModalBtn')]")))
 
 ## sortout cookie button
 try:
-    WebDriverWait(browser, 10).until(
+    WebDriverWait(browser, 20).until(
         EC.element_to_be_clickable((By.XPATH, ".//div[contains(@class, 'loginModalBtn')]"))).click()
     print("accepted cookies")
 except Exception as e:
@@ -105,7 +105,15 @@ if browser.find_element(By.NAME, "login-submit").is_enabled():
     browser.find_element(By.XPATH, "//input[@name=\"login-password\"]").send_keys('c21bd681')
     browser.find_element(By.XPATH, "//input[@name=\"login-submit\"]").click()
 
-# TEST TEST
+
+url = 'https://www.oddsportal.com/matches/my-matches/20230121'
+browser.get(url)
+WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.next-m\:pt-0')))
+element_list = browser.find_elements(By.CSS_SELECTOR, '.next-m\:pt-0')
+print(len(element_list))
+#.next-m\:pt-0
+
+
 
 
 
