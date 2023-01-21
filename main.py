@@ -111,7 +111,7 @@ browser.get(url)
 WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.next-m\:pt-0')))
 element_list = browser.find_elements(By.CSS_SELECTOR, '.next-m\:pt-0')
 print(len(element_list))
-#.next-m\:pt-0
+
 
 
 
